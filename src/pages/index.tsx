@@ -1,6 +1,6 @@
 import { type NextPage } from "next"
 import Head from "next/head"
-import { type ChangeEvent, type FormEvent, useState } from "react"
+import { type ChangeEvent, type FormEvent, useState, useEffect } from "react"
 import { UNIDENTIFIED_ERROR } from "~/constants"
 import { Loading } from "~/Loading"
 import { api } from "~/utils/api"
@@ -14,6 +14,10 @@ const Home: NextPage = () => {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [error, setError] = useState("")
   const [generatedLink, setGeneratedLink] = useState("")
+
+  useEffect(() => {
+    setError("")
+  }, [formValues])
 
   const { mutate: addLinkMutation, isLoading } =
     api.linkShortner.addLink.useMutation({
@@ -40,7 +44,6 @@ const Home: NextPage = () => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget
     setFormValues((prev) => ({ ...prev, [name]: value }))
-    setError("")
   }
 
   const handleCopyLink = () => {
