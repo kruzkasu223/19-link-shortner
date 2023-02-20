@@ -185,7 +185,7 @@ const Home: NextPage = () => {
                   </button>
                 </label>
               </div>
-              <button className="btn-primary btn">Button</button>
+              <button className="btn-primary btn">Generate</button>
             </form>
           </div>
         </div>
