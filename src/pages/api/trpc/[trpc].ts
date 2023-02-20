@@ -14,4 +14,16 @@ export default createNextApiHandler({
           )
         }
       : undefined,
+  responseMeta: ({ type, errors }) => {
+    const allOk = errors.length === 0
+    const isQuery = type === "query"
+    if (allOk && isQuery) {
+      return {
+        headers: {
+          "cache-control": `s-maxage=1000000000`,
+        },
+      }
+    }
+    return {}
+  },
 })
