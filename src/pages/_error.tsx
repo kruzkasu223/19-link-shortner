@@ -2,11 +2,6 @@ import { type NextPage } from "next"
 import Head from "next/head"
 
 const Error: NextPage = () => {
-  // const hello = api.linkShortner.link.useQuery({
-  //   alias: "g",
-  // })
-  // console.log(hello.data?.url)
-
   return (
     <>
       <Head>
